@@ -77,7 +77,7 @@ const AppDrawerNavigator = createDrawerNavigator({
           resizeMode="contain"
           style={{ width: 20, height: 20, tintColor: GLOBAL.COLOR.YFFBROWN }}
         />
-      ),
+      )
     }
   },
 }, {
@@ -91,9 +91,10 @@ const AppDrawerNavigator = createDrawerNavigator({
       fontFamily: 'BebasNeueRegular',
       fontSize: 26,
       fontWeight: 'normal'
-    }
+    },
+    activeTintColor: GLOBAL.COLOR.YFFBROWN
   }
-})
+});
 
 const AppNavigator = createAppContainer(AppDrawerNavigator);
 

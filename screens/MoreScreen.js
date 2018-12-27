@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
-import { Container, Header, Left, Right, Icon, Title, Button, Body } from 'native-base';
+import { StyleSheet, Text } from 'react-native';
+import { Container, Header, Left, Right, Icon, Title, Button, Body, Content, List, ListItem } from 'native-base';
 import GLOBAL from '../constants';
+import MoreList from '../components/more_list';
 
 class MoreScreen extends Component {
   render(){
@@ -19,6 +20,7 @@ class MoreScreen extends Component {
           <Right>
           </Right>
         </Header>
+        <MoreList />
       </Container>
     );
   }
