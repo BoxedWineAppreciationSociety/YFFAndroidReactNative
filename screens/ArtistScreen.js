@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import { Container, Header, Left, Button, Body, Title, Right, Icon } from 'native-base';
 import GLOBAL from '../constants'
 import ArtistScreenTabButton from '../components/artist_screen_tab_button';
+import PlayingTimesList from '../components/playing_times_list';
 
 class ArtistScreen extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class ArtistScreen extends Component {
           <Text>{artistBio}</Text>
         </View>
         <View style={(this.state.btnSelected == 'details')?styles.none:styles.playingTimes}>
-          <Text>Playing Times</Text>
+          <PlayingTimesList artistId={artist.id} />
         </View>
       </Container>
     );
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
     display: 'none'
   },
   playingTimes: {
-
+    flex: 5
   }
 })
 export default ArtistScreen
