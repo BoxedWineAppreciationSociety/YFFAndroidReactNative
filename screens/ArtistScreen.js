@@ -44,8 +44,11 @@ class ArtistScreen extends Component {
           <ArtistScreenTabButton label='details' btnSelected={this.state.btnSelected} callback={this.updateSelectedTab} />
           <ArtistScreenTabButton label='playing times' btnSelected={this.state.btnSelected} callback={this.updateSelectedTab} />
         </View>
-        <View style={styles.artistDetails}>
+        <View style={(this.state.btnSelected == 'details')?styles.artistDetails:styles.none}>
           <Text>{artistBio}</Text>
+        </View>
+        <View style={(this.state.btnSelected == 'details')?styles.none:styles.playingTimes}>
+          <Text>Playing Times</Text>
         </View>
       </Container>
     );
@@ -93,6 +96,12 @@ const styles = StyleSheet.create({
     marginStart: 10,
     marginEnd: 10,
     fontSize: 16,
+  },
+  none: {
+    display: 'none'
+  },
+  playingTimes: {
+
   }
 })
 export default ArtistScreen
