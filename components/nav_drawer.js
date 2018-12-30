@@ -8,7 +8,7 @@ class MainNavigationComponent extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.headerImage}>
-          <Image source={require('../assets/DrawerBanner.png')} style={{alignSelf: 'stretch'}} />
+          <Image source={require('../assets/DrawerBanner.png')} style={styles.headerImageImage} />
         </View>
         <ScrollView>
           <DrawerItems {...this.props} />
@@ -23,9 +23,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   headerImage: {
-    alignItems: 'stretch',
-    justifyContent: 'center',
-    marginBottom: 20
+    paddingBottom: 40,
+    flex: 2,
+    overflow: 'visible',
+  },
+  headerImageImage: {
+    // flex: 2,
+    width: '100%',
+    // alignSelf: 'stretch',
+    resizeMode: 'cover',
+    // overflow: 'visible'
+
   }
 });
 

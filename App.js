@@ -16,6 +16,7 @@ import MoreScreen from './screens/MoreScreen'
 import MapScreen from './screens/MapScreen'
 import MainNavigationComponent from './components/nav_drawer';
 import GLOBAL from './constants';
+import MadeWithLoveScreen from './screens/MadeWithLoveScreen';
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -41,7 +42,7 @@ const AppDrawerNavigator = createDrawerNavigator({
       )
     },
   },
-  EVENT_MAP: {
+  EVENTMAP: {
     screen: MapScreen,
     navigationOptions: {
       drawerLabel: 'EVENT MAP',
@@ -80,11 +81,24 @@ const AppDrawerNavigator = createDrawerNavigator({
       )
     }
   },
+  MADEWITHLOVE: {
+    screen: MadeWithLoveScreen,
+    navigationOptions: {
+      drawerLabel: 'MADE WITH LOVE',
+      drawerIcon: ({ tintColor }) => (
+        <Image
+          source={require("./assets/icons/ic-made-with-love.png")}
+          resizeMode="contain"
+          style={{ width: 20, height: 20, tintColor: GLOBAL.COLOR.YFFBROWN }}
+        />
+      )
+    }
+  }
 }, {
   contentComponent: MainNavigationComponent,
   defaultNavigationOptions: {
     color: GLOBAL.COLOR.YFFBROWN,
-    textAlign: 'left'
+    textAlign: 'left',
   },
   contentOptions: {
     labelStyle: {
@@ -92,7 +106,7 @@ const AppDrawerNavigator = createDrawerNavigator({
       fontSize: 26,
       fontWeight: 'normal'
     },
-    activeTintColor: GLOBAL.COLOR.YFFBROWN
+    activeTintColor: GLOBAL.COLOR.YFFBROWN,
   }
 });
 
