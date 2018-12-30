@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { Container, Header, Left, Button, Body, Title, Right, Icon } from 'native-base';
 import GLOBAL from '../constants'
+import ArtistScreenTabButton from '../components/artist_screen_tab_button';
 
 class ArtistScreen extends Component {
   constructor(props) {
     super(props);
     this.state = { btnSelected: 'details' }
+  }
+
+  // Update the btnSelected State on ArtistScreenTabButton press
+  updateSelectedTab = (dataFromButton) => {
+    this.setState({ btnSelected: dataFromButton });
   }
 
   render() {
@@ -35,14 +41,8 @@ class ArtistScreen extends Component {
           <Text style={styles.artistName}>{artistName.toUpperCase()}</Text>
         </View>
         <View style={styles.aboutPlayinTimesContainer}>
-          <Button style={(this.state.btnSelected == 'details') ? styles.tabButtonActive : styles.tabButton}
-                  onPress={() => this.setState({ btnSelected: 'details' })}>
-            <Text style={(this.state.btnSelected == 'details') ? styles.tabButtonLabelActive : styles.tabButtonLabel}>Details</Text>
-          </Button>
-          <Button style={(this.state.btnSelected == 'playingTimes') ? styles.tabButtonActive : styles.tabButton}
-                  onPress={() => this.setState({ btnSelected: 'playingTimes' })}>
-            <Text style={(this.state.btnSelected == 'playingTimes') ? styles.tabButtonLabelActive : styles.tabButtonLabel}>Playing Times</Text>
-          </Button>
+          <ArtistScreenTabButton label='details' btnSelected={this.state.btnSelected} callback={this.updateSelectedTab} />
+          <ArtistScreenTabButton label='playing times' btnSelected={this.state.btnSelected} callback={this.updateSelectedTab} />
         </View>
         <View style={styles.artistDetails}>
           <Text>{artistBio}</Text>
@@ -86,35 +86,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'stretch'
-  },
-  tabButton: {
-    textAlign: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    resizeMode: 'stretch',
-    backgroundColor: '#FFF',
-    borderRadius: 0,
-  },
-  tabButtonActive: {
-    textAlign: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    resizeMode: 'stretch',
-    backgroundColor: '#FFF',
-    borderRadius: 0,
-    borderBottomColor: GLOBAL.COLOR.YFFGREEN,
-    borderBottomWidth: 2
-  },
-  tabButtonLabel: {
-    fontSize: 20,
-    fontFamily: 'BebasNeueRegular'
-  },
-  tabButtonLabelActive: {
-    fontSize: 20,
-    fontFamily: 'BebasNeueRegular',
-    color: GLOBAL.COLOR.YFFGREEN
   },
   artistDetails: {
     flex: 5,
