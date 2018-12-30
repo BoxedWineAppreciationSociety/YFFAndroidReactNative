@@ -34,7 +34,7 @@ export default ProgramDayPicker
 const styles = StyleSheet.create({
   bunting: {
     width: '100%',
-    height: 80,
+    height: 110,
     flex: 1
   },
   programDayPicker: {
@@ -46,6 +46,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingStart: 40,
     paddingEnd: 40,
+    borderBottomColor: GLOBAL.COLOR.YFFLIGHTGREY,
+    borderBottomWidth: 1,
   },
   daySelectionButton: {
     marginTop: 20,
@@ -57,12 +59,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   dayHeading: {
-    flex: 2,
+    flex: 1.2,
     fontFamily: 'BebasNeueBold',
     fontSize: 28
   },
   dayDetail: {
     flex: 1,
+    fontSize: 18,
     fontFamily: 'BebasNeueRegular'
   }
 });

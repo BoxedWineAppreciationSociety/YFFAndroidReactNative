@@ -8,9 +8,9 @@ module.exports = {
     YFFLIGHTGREY: '#D8D8D8'
   },
   DATES: {
-    FRI: 'March 24',
-    SAT: 'March 25',
-    SUN: 'March 26'
+    FRI: '24 Mar',
+    SAT: '25 Mar',
+    SUN: '26 Mar'
   },
   ENDPOINTS: {
     ALLPERFORMANCES: 'https://raw.githubusercontent.com/RustComet/YFFJSON/master/all_performances_remote.json',
