@@ -46,7 +46,7 @@ class ArtistScreen extends Component {
           <ArtistScreenTabButton label='playing times' btnSelected={this.state.btnSelected} callback={this.updateSelectedTab} />
         </View>
         <View style={(this.state.btnSelected == 'details')?styles.artistDetails:styles.none}>
-          <Text>{artistBio}</Text>
+          <Text style={styles.artistBioText}>{artistBio}</Text>
         </View>
         <View style={(this.state.btnSelected == 'details')?styles.none:styles.playingTimes}>
           <PlayingTimesList artistId={artist.id} />
@@ -94,9 +94,12 @@ const styles = StyleSheet.create({
   artistDetails: {
     flex: 5,
     marginTop: 0,
-    marginStart: 10,
-    marginEnd: 10,
+    marginStart: 18,
+    marginEnd: 18
+  },
+  artistBioText: {
     fontSize: 16,
+    lineHeight: 22
   },
   none: {
     display: 'none'

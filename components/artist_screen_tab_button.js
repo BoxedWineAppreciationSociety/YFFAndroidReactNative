@@ -24,6 +24,7 @@ export default ArtistScreenTabButton;
 
 const styles = StyleSheet.create({
   tabButton: {
+    height: 55,
     textAlign: 'center',
     alignItems: 'center',
     justifyContent: 'center',
@@ -33,6 +34,7 @@ const styles = StyleSheet.create({
     borderRadius: 0,
   },
   tabButtonActive: {
+    height: 55,
     textAlign: 'center',
     alignItems: 'center',
     justifyContent: 'center',
@@ -45,10 +47,11 @@ const styles = StyleSheet.create({
   },
   tabButtonLabel: {
     fontSize: 20,
-    fontFamily: 'BebasNeueRegular'
+    fontFamily: 'BebasNeueRegular',
+    fontSize: 24
   },
   tabButtonLabelActive: {
-    fontSize: 20,
+    fontSize: 24,
     fontFamily: 'BebasNeueRegular',
     color: GLOBAL.COLOR.YFFGREEN
   }
