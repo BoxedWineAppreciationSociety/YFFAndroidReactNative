@@ -3,11 +3,28 @@ import { StyleSheet, View, Text, Image } from 'react-native';
 import { Container, Left, Icon, ListItem, Thumbnail } from 'native-base';
 
 import GLOBAL from '../../constants';
+import { fetchArtist } from '../../api/artist_fetcher';
+
 import Moment from 'react-moment';
 
 class ProgramListItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      artist: {
+        name: 'Loading…'
+      }
+    }
+  }
+
   render() {
     const performance = this.props.performance;
+
+    fetchArtist(this.props.performance.artistId)
+      .then((response) => {
+        this.setState({ artist: response});
+      }
+    );
 
     return(
       <View style={styles.programListItem}>
@@ -15,7 +32,7 @@ class ProgramListItem extends Component {
           <Thumbnail square source={require('../../assets/images/artist-placeholder.png')} />
         </View>
         <View style={styles.programDetails}>
-          <Text style={styles.artistNameLabel}>Scott Cook</Text>
+          <Text style={styles.artistNameLabel}>{this.state.artist.name}</Text>
           <Moment unix
                   element={Text}
                   format="h:mma"

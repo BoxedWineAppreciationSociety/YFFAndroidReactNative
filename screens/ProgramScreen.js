@@ -13,7 +13,7 @@ class ProgramScreen extends Component {
     super(props);
 
     this.state = {
-      daySelected: 'SAT',
+      daySelected: 'FRI',
       programEndpoint: GLOBAL.ENDPOINTS.FRIPERFORMANCES
     }
   }
