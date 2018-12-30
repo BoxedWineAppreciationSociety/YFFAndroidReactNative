@@ -3,8 +3,10 @@ import {
   Text,
   StyleSheet
 } from 'react-native';
-import { Container, Header, Left, Right, Body, Icon, Title, Button } from 'native-base';
+import { Container, Header, Left, Right, Body, Icon, Title, Button, View } from 'native-base';
 import GLOBAL from '../constants';
+import ProgramDayPicker from '../components/program/day_picker';
+import PlayingTimesList from '../components/playing_times_list';
 
 class ProgramScreen extends Component{
   render(){
@@ -22,6 +24,8 @@ class ProgramScreen extends Component{
         <Right>
         </Right>
       </Header>
+
+      <ProgramDayPicker />
     </Container>
     );
   }

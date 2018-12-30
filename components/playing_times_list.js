@@ -6,7 +6,10 @@ import {
   StyleSheet
 } from 'react-native';
 import { ListItem } from 'native-base';
+
 import PlayingTimesListItem from './playing_time_list_item';
+import GLOBAL from '../constants';
+
 
 // Data Source
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
@@ -20,7 +23,7 @@ class PlayingTimesList extends Component {
   componentDidMount() {
     const artistId = this.props.artistId || null;
 
-    fetch('https://raw.githubusercontent.com/RustComet/YFFJSON/master/all_performances_remote.json')
+    fetch(GLOBAL.ENDPOINTS.ALLPERFORMANCES)
     .then((response) => response.json())
     .then((responseJson) => responseJson.performances)
     .then((responseJson) => {

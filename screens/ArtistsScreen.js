@@ -22,7 +22,7 @@ class ArtistsScreen extends Component {
   }
 
   componentDidMount() {
-    fetch('https://raw.githubusercontent.com/RustComet/YFFJSON/master/artists_remote.json')
+    fetch(GLOBAL.ENDPOINTS.ARTISTS)
     .then((response) => response.json())
     .then((responseJson) => responseJson.artists)
     .then((responseJson) => {
