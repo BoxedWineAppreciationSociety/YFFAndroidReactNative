@@ -21,7 +21,7 @@ class ProgramList extends Component {
   }
 
   componentDidMount() {
-    fetch(GLOBAL.ENDPOINTS.FRIPERFORMANCES)
+    fetch(this.props.endpoint)
     .then((response) => response.json())
     .then((responseJson) => responseJson.performances)
     .then((responseJson) => {

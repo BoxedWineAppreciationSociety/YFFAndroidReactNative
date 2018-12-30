@@ -8,7 +8,21 @@ import GLOBAL from '../constants';
 import ProgramDayPicker from '../components/program/day_picker';
 import ProgramList from '../components/program/program_list';
 
-class ProgramScreen extends Component{
+class ProgramScreen extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      daySelected: 'SAT',
+      programEndpoint: GLOBAL.ENDPOINTS.FRIPERFORMANCES
+    }
+  }
+
+  updateSelectedDay = (dataFromButton) => {
+    this.setState({ daySelected: dataFromButton });
+    console.log('Callback')
+  }
+
   render(){
     return (
       <Container>
@@ -25,10 +39,16 @@ class ProgramScreen extends Component{
         </Right>
       </Header>
       <View style={styles.dayPicker}>
-        <ProgramDayPicker />
+        <ProgramDayPicker callback={this.updateSelectedDay} daySelected={this.state.daySelected} />
       </View>
-      <View style={styles.programList}>
-        <ProgramList />
+      <View style={(this.state.daySelected === 'FRI') ? styles.programList : styles.none}>
+        <ProgramList endpoint={GLOBAL.ENDPOINTS.FRIPERFORMANCES} />
+      </View>
+      <View style={(this.state.daySelected === 'SAT') ? styles.programList : styles.none}>
+        <ProgramList endpoint={GLOBAL.ENDPOINTS.SATPERFORMANCES} />
+      </View>
+      <View style={(this.state.daySelected === 'SUN') ? styles.programList : styles.none}>
+        <ProgramList endpoint={GLOBAL.ENDPOINTS.SUNPERFORMANCES} daySelected={this.state.daySelected} />
       </View>
     </Container>
     );
@@ -53,5 +73,8 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: 'SourceSansPro-Regular',
     fontSize: 24,
+  },
+  none: {
+    display: 'none'
   }
 });

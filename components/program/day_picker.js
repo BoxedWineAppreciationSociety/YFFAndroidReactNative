@@ -10,17 +10,17 @@ class ProgramDayPicker extends Component {
       <View style={styles.programDayPicker}>
         <ImageBackground style={styles.bunting} source={require('../../assets/images/Bunting.png')}>
           <View style={styles.dateButtonsContainer}>
-            <Button style={styles.daySelectionButton}>
-              <Text style={styles.dayHeading}>FRI</Text>
-              <Text style={styles.dayDetail}>{GLOBAL.DATES.FRI}</Text>
+            <Button style={styles.daySelectionButton} onPress={() => this.props.callback('FRI')}>
+              <Text style={(this.props.daySelected == 'FRI') ? styles.dayHeadingActive : styles.dayHeading}>FRI</Text>
+              <Text style={(this.props.daySelected == 'FRI') ? styles.dayDetailActive : styles.dayDetail}>{GLOBAL.DATES.FRI}</Text>
             </Button>
-            <Button style={styles.daySelectionButton}>
-              <Text style={styles.dayHeading}>SAT</Text>
-              <Text style={styles.dayDetail}>{GLOBAL.DATES.SAT}</Text>
+            <Button style={styles.daySelectionButton} onPress={() => this.props.callback('SAT')}>
+            <Text style={(this.props.daySelected == 'SAT') ? styles.dayHeadingActive : styles.dayHeading}>SAT</Text>
+            <Text style={(this.props.daySelected == 'SAT') ? styles.dayDetailActive : styles.dayDetail}>{GLOBAL.DATES.SAT}</Text>
             </Button>
-            <Button style={styles.daySelectionButton}>
-              <Text style={styles.dayHeading}>SUN</Text>
-              <Text style={styles.dayDetail}>{GLOBAL.DATES.SUN}</Text>
+            <Button style={styles.daySelectionButton} onPress={() => this.props.callback('SUN')}>
+            <Text style={(this.props.daySelected == 'SUN') ? styles.dayHeadingActive : styles.dayHeading}>SUN</Text>
+              <Text style={(this.props.daySelected == 'SUN') ? styles.dayDetailActive : styles.dayDetail}>{GLOBAL.DATES.SUN}</Text>
             </Button>
           </View>
         </ImageBackground>
@@ -63,9 +63,21 @@ const styles = StyleSheet.create({
     fontFamily: 'BebasNeueBold',
     fontSize: 28
   },
+  dayHeadingActive: {
+    flex: 1.2,
+    fontFamily: 'BebasNeueBold',
+    fontSize: 28,
+    color: GLOBAL.COLOR.YFFRED
+  },
   dayDetail: {
     flex: 1,
     fontSize: 18,
     fontFamily: 'BebasNeueRegular'
+  },
+  dayDetailActive: {
+    flex: 1,
+    fontSize: 18,
+    fontFamily: 'BebasNeueRegular',
+    color: GLOBAL.COLOR.YFFRED
   }
 });

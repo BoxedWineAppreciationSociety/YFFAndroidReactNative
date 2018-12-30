@@ -9,7 +9,6 @@ class ProgramListItem extends Component {
   render() {
     const performance = this.props.performance;
 
-
     return(
       <View style={styles.programListItem}>
         <View style={styles.thumbnail}>
