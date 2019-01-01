@@ -43,7 +43,7 @@ class ArtistScreen extends Component {
 
     return(
       <Container style={{alignItems: 'stretch'}}>
-        <Header style={{backgroundColor: GLOBAL.COLOR.YFFGREEN}}>
+        <Header style={{backgroundColor: (navigation.getParam('fromProgram') == true)?GLOBAL.COLOR.YFFRED:GLOBAL.COLOR.YFFGREEN}}>
           <Left>
             <Button transparent>
               <Icon name='md-arrow-back' onPress={() => this.props.navigation.goBack()} />

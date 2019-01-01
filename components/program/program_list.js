@@ -37,7 +37,7 @@ class ProgramList extends Component {
   }
 
   selectedArtistRow( selectedRowData ) {
-    this.props.navigation.navigate('ARTIST', { artistId: selectedRowData.artistId });
+    this.props.navigation.navigate('ARTIST', { artistId: selectedRowData.artistId, fromProgram: true });
   }
 
   render() {
