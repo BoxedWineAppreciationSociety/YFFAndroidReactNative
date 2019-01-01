@@ -42,7 +42,7 @@ class ArtistScreen extends Component {
     const artistId = navigation.getParam('artistId');
 
     return(
-      <Container style={{alignItems: 'stretch'}}>
+      <Container style={{alignItems: 'stretch', flexDirection: 'column'}}>
         <Header style={{backgroundColor: (navigation.getParam('fromProgram') == true)?GLOBAL.COLOR.YFFRED:GLOBAL.COLOR.YFFGREEN}}>
           <Left>
             <Button transparent>
@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
   artistImageView: {
     alignItems: 'stretch',
     flex: 1,
+    height: 300,
     flexDirection: 'row'
   },
   artistImage: {
@@ -106,12 +107,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1,
     flexDirection: 'row',
-    alignItems: 'stretch'
+    alignItems: 'stretch',
+    height: 80
   },
   artistDetails: {
-    flex: 5,
+    flex: 1,
     marginTop: 0,
     marginStart: 18,
     marginEnd: 18

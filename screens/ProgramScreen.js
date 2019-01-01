@@ -60,14 +60,15 @@ export default ProgramScreen
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: 'stretch',
+    justifyContent: 'center',
+    backgroundColor: '#FFF'
   },
   dayPicker: {
-    flex: 1
+    height: 100
   },
   programList: {
-    flex: 4.6,
+    flex: 1,
     marginTop: 10
   },
   title: {
