@@ -17,14 +17,16 @@ class ProgramListItem extends Component {
     }
   }
 
+  componentDidMount() {
+    fetchArtist(this.props.performance.artistId)
+    .then((response) => {
+      this.setState({ artist: response});
+    }
+  );
+  }
+
   render() {
     const performance = this.props.performance;
-
-    fetchArtist(this.props.performance.artistId)
-      .then((response) => {
-        this.setState({ artist: response});
-      }
-    );
 
     return(
       <TouchableOpacity style={styles.programListItem} onPress={this.props.onPress}>
