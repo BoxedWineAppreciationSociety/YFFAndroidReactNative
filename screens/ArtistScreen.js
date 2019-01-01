@@ -4,11 +4,25 @@ import { Container, Header, Left, Button, Body, Title, Right, Icon } from 'nativ
 import GLOBAL from '../constants'
 import ArtistScreenTabButton from '../components/artist_screen_tab_button';
 import PlayingTimesList from '../components/playing_times_list';
+import { fetchArtist } from '../api/artist_fetcher';
 
 class ArtistScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = { btnSelected: 'details' }
+    this.state = { btnSelected: 'details', artist: { name: 'Loading…', summary: 'Loading…' } }
+  }
+
+  componentDidMount() {
+    const { navigation } = this.props;
+
+    if (navigation.getParam('artist') !== undefined) {
+      this.setArtist(navigation.getParam('artist', null));
+    } else {
+      fetchArtist(navigation.getParam('artistId', null))
+      .then((response) => {
+        this.setArtist(response)
+      });
+    }
   }
 
   // Update the btnSelected State on ArtistScreenTabButton press
@@ -16,11 +30,16 @@ class ArtistScreen extends Component {
     this.setState({ btnSelected: dataFromButton });
   }
 
+  setArtist(artist) {
+    this.setState({ artist: artist })
+  }
+
   render() {
     const { navigation } = this.props;
-    const artist = navigation.getParam('artist', null);
-    const artistName = artist.name;
-    const artistBio = artist.summary;
+
+    const artistName = this.state.artist.name;
+    const artistBio = this.state.artist.summary;
+    const artistId = navigation.getParam('artistId');
 
     return(
       <Container style={{alignItems: 'stretch'}}>
@@ -49,7 +68,7 @@ class ArtistScreen extends Component {
           <Text style={styles.artistBioText}>{artistBio}</Text>
         </View>
         <View style={(this.state.btnSelected == 'details')?styles.none:styles.playingTimes}>
-          <PlayingTimesList artistId={artist.id} />
+          <PlayingTimesList artistId={artistId} />
         </View>
       </Container>
     );

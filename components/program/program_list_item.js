@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
-import { Container, Left, Icon, ListItem, Thumbnail } from 'native-base';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { Thumbnail } from 'native-base';
 
 import GLOBAL from '../../constants';
 import { fetchArtist } from '../../api/artist_fetcher';
@@ -27,7 +27,7 @@ class ProgramListItem extends Component {
     );
 
     return(
-      <View style={styles.programListItem}>
+      <TouchableOpacity style={styles.programListItem} onPress={this.props.onPress}>
         <View style={styles.thumbnail}>
           <Thumbnail square source={require('../../assets/images/artist-placeholder.png')} />
         </View>
@@ -41,7 +41,7 @@ class ProgramListItem extends Component {
           </Moment>
           <Text style={styles.programDetailsText}>{performance.stage}</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 }

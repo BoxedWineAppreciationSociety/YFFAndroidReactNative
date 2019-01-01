@@ -41,9 +41,22 @@ const ArtistNavigator = createStackNavigator(
   }
 );
 
+const ProgramNavigator = createStackNavigator(
+  {
+    PROGRAM: {
+      screen: ProgramScreen
+    },
+    ARTIST: {
+      screen: ArtistScreen
+    }
+  }, {
+    headerMode: 'none'
+  }
+);
+
 const AppDrawerNavigator = createDrawerNavigator({
   PROGRAM: {
-    screen: ProgramScreen,
+    screen: ProgramNavigator,
     navigationOptions: {
       drawerLabel: 'PROGRAM',
       drawerIcon: ({ tintColor }) => (

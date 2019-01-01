@@ -17,11 +17,11 @@ const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 class PlayingTimesList extends Component {
   constructor(props) {
     super(props);
-    this.state = { dataSource: ds.cloneWithRows([]), loading: true };
+    this.state = { dataSource: ds.cloneWithRows([]), loading: true, artistId: null };
   }
 
   componentDidMount() {
-    const artistId = this.props.artistId || null;
+    const artistId = this.props.artistId;
 
     fetch(GLOBAL.ENDPOINTS.ALLPERFORMANCES)
     .then((response) => response.json())

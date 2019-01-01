@@ -8,6 +8,7 @@ import {
 import { ListItem } from 'native-base';
 
 import GLOBAL from '../../constants';
+import { fetchArtist } from '../../api/artist_fetcher';
 import ProgramListItem from './program_list_item';
 
 
@@ -35,6 +36,10 @@ class ProgramList extends Component {
     });
   }
 
+  selectedArtistRow( selectedRowData ) {
+    this.props.navigation.navigate('ARTIST', { artistId: selectedRowData.artistId });
+  }
+
   render() {
     return(
       <View>
@@ -45,7 +50,8 @@ class ProgramList extends Component {
           :
           (<ListView style = {{ alignSelf: 'stretch' }}
                      dataSource = { this.state.dataSource }
-                     renderRow = {( rowData ) => <ProgramListItem performance={rowData}/>
+                     renderRow = {( rowData ) =>
+                      <ProgramListItem performance={rowData} onPress={() => this.selectedArtistRow(rowData)}/>
                      }
             />)
             }

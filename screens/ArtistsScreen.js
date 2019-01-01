@@ -44,7 +44,7 @@ class ArtistsScreen extends Component {
 
   selectedArtistRow( selectedArtist )
     {
-        this.props.navigation.navigate('ARTIST', { artist: selectedArtist });
+        this.props.navigation.navigate('ARTIST', { artist: selectedArtist, artistId: selectedArtist.id });
     }
 
   render(){
