@@ -19,8 +19,17 @@ import GLOBAL from './constants';
 import MadeWithLoveScreen from './screens/MadeWithLoveScreen';
 import ArtistScreen from './screens/ArtistScreen';
 
+import { localStorage } from './api/storage';
+
 type Props = {};
 export default class App extends Component<Props> {
+  componentWillMount() {
+    storage.load({ key: 'artists', autoSync: true });
+    storage.load({ key: 'fridayPerformances', autoSync: true });
+    storage.load({ key: 'saturdayPerformances', autoSync: true });
+    storage.load({ key: 'sundayPerformances', autoSync: true });
+  }
+
   render() {
     return (
       <AppNavigator/>
