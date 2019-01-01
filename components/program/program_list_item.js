@@ -4,6 +4,7 @@ import { Thumbnail } from 'native-base';
 
 import GLOBAL from '../../constants';
 import { fetchArtist } from '../../api/artist_fetcher';
+import images from '../../assets/artist_photos/index';
 
 import Moment from 'react-moment';
 
@@ -25,13 +26,17 @@ class ProgramListItem extends Component {
   );
   }
 
+  artistImage(imageName) {
+    return (images[imageName]!=null) ? images[imageName] : require('../../assets/images/artist-placeholder.png');
+  }
+
   render() {
     const performance = this.props.performance;
 
     return(
       <TouchableOpacity style={styles.programListItem} onPress={this.props.onPress}>
         <View style={styles.thumbnail}>
-          <Thumbnail square source={require('../../assets/images/artist-placeholder.png')} />
+          <Thumbnail square source={this.artistImage(this.state.artist.image_name)} />
         </View>
         <View style={styles.programDetails}>
           <Text style={styles.artistNameLabel}>{this.state.artist.name}</Text>
