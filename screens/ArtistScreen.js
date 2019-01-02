@@ -6,6 +6,8 @@ import ArtistScreenTabButton from '../components/artist_screen_tab_button';
 import PlayingTimesList from '../components/playing_times_list';
 import { fetchArtist } from '../api/artist_fetcher';
 import images from '../assets/artist_photos/index';
+import { ScrollView } from 'react-native-gesture-handler';
+import SocialButtonList from '../components/artists/social_button_list';
 
 class ArtistScreen extends Component {
   constructor(props) {
@@ -69,9 +71,12 @@ class ArtistScreen extends Component {
           <ArtistScreenTabButton label='details' btnSelected={this.state.btnSelected} callback={this.updateSelectedTab} />
           <ArtistScreenTabButton label='playing times' btnSelected={this.state.btnSelected} callback={this.updateSelectedTab} />
         </View>
-        <View style={(this.state.btnSelected == 'details')?styles.artistDetails:styles.none}>
-          <Text style={styles.artistBioText}>{artistBio}</Text>
-        </View>
+        <ScrollView style={(this.state.btnSelected == 'details')?styles.artistDetails:styles.none}>
+          <View style={styles.bioTextContainer}>
+            <Text style={styles.artistBioText}>{artistBio}</Text>
+          </View>
+          <SocialButtonList artistId={artistId} />
+        </ScrollView>
         <View style={(this.state.btnSelected == 'details')?styles.none:styles.playingTimes}>
           <PlayingTimesList artistId={artistId} />
         </View>
@@ -122,6 +127,9 @@ const styles = StyleSheet.create({
     marginTop: 0,
     marginStart: 18,
     marginEnd: 18
+  },
+  bioTextContainer: {
+    marginBottom: 20
   },
   artistBioText: {
     fontSize: 16,
