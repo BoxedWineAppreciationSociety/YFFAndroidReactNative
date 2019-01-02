@@ -7,37 +7,37 @@ import {
 } from 'react-native';
 import { ListItem } from 'native-base';
 
-import PlayingTimesListItem from './playing_time_list_item';
-import GLOBAL from '../constants';
+import GLOBAL from '../../constants';
+import { fetchArtist } from '../../api/artist_fetcher';
+import ProgramListItem from './program_list_item';
 
 
 // Data Source
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
-class PlayingTimesList extends Component {
+class ProgramList extends Component {
   constructor(props) {
     super(props);
-    this.state = { dataSource: ds.cloneWithRows([]), loading: true, artistId: null };
+    this.state = { dataSource: ds.cloneWithRows([]), loading: true };
   }
 
   componentDidMount() {
-    const artistId = this.props.artistId;
-
-    fetch(GLOBAL.ENDPOINTS.ALLPERFORMANCES)
+    fetch(this.props.endpoint)
     .then((response) => response.json())
     .then((responseJson) => responseJson.performances)
     .then((responseJson) => {
-      return responseJson.filter(x => (artistId !== null)?x.artistId == artistId:1==1)
-    })
-    .then((responseJson) => {
         responseJson.sort(function(a, b) {
-          return a-b;
+          return a.time-b.time;
         });
         this.setState({ dataSource: ds.cloneWithRows( responseJson ) }, () => { this.setState({ loading: false }) });
     })
     .catch((error) => {
         console.error(error);
     });
+  }
+
+  selectedArtistRow( selectedRowData ) {
+    this.props.navigation.navigate('ARTIST', { artistId: selectedRowData.artistId, fromProgram: true });
   }
 
   render() {
@@ -50,7 +50,8 @@ class PlayingTimesList extends Component {
           :
           (<ListView style = {{ alignSelf: 'stretch' }}
                      dataSource = { this.state.dataSource }
-                     renderRow = {( rowData ) => <PlayingTimesListItem performance={rowData}/>
+                     renderRow = {( rowData ) =>
+                      <ProgramListItem performance={rowData} onPress={() => this.selectedArtistRow(rowData)}/>
                      }
             />)
             }
@@ -59,7 +60,7 @@ class PlayingTimesList extends Component {
   }
 }
 
-export default PlayingTimesList;
+export default ProgramList;
 
 const styles = StyleSheet.create({
 

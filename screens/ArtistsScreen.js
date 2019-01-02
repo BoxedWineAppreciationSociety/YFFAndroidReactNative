@@ -22,7 +22,7 @@ class ArtistsScreen extends Component {
   }
 
   componentDidMount() {
-    fetch('https://raw.githubusercontent.com/RustComet/YFFJSON/master/artists_remote.json')
+    fetch(GLOBAL.ENDPOINTS.ARTISTS)
     .then((response) => response.json())
     .then((responseJson) => responseJson.artists)
     .then((responseJson) => {
@@ -44,7 +44,7 @@ class ArtistsScreen extends Component {
 
   selectedArtistRow( selectedArtist )
     {
-        this.props.navigation.navigate('ARTIST', { artist: selectedArtist });
+        this.props.navigation.navigate('ARTIST', { artist: selectedArtist, artistId: selectedArtist.id });
     }
 
   render(){
