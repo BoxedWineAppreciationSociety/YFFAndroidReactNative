@@ -5,8 +5,17 @@ import GLOBAL from '../constants';
 
 export const localStorage = new Storage({
   storageBackend: AsyncStorage,
-  defaultExpires: null,
+
+  // Expire data after 1 day (which will force a resync)
+  // Because we have autoSync on it will used the expired data
+  // if the resync fails
+  defaultExpires: 1000 * 3600 * 24,
+  autoSync: true,
+
+  // Cache the responses in memory for speedy loading
   enableCache: true,
+
+  // Various sync methods for the different keys
   sync: {
     async artists() {
       const response = await fetch(GLOBAL.ENDPOINTS.ARTISTS);
@@ -110,4 +119,6 @@ export const localStorage = new Storage({
   }
 });
 
+// Set a global variable so we are always
+// referring to the one instance of storage.
 global.storage = localStorage;

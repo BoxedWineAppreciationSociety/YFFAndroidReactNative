@@ -24,10 +24,22 @@ import { localStorage } from './api/storage';
 type Props = {};
 export default class App extends Component<Props> {
   componentWillMount() {
-    storage.load({ key: 'artists', autoSync: true });
-    storage.load({ key: 'fridayPerformances', autoSync: true });
-    storage.load({ key: 'saturdayPerformances', autoSync: true });
-    storage.load({ key: 'sundayPerformances', autoSync: true });
+    this.resyncData();
+  }
+
+  resyncData() {
+    storage.getBatchData([
+      { key: 'artists' },
+      { key: 'fridayPerformances' },
+      { key: 'saturdayPerformances' },
+      { key: 'sundayPerformances' },
+      { key: 'allPerformances' }
+    ])
+    .then(results => {
+      results.forEach(result => {
+        console.log(result);
+      })
+    })
   }
 
   render() {
