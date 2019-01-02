@@ -3,16 +3,50 @@ import {
   View,
   Text,
   SafeAreaView,
-  StyleSheet
+  StyleSheet,
+  ListView,
+  ActivityIndicator,
+  TouchableOpacity
 } from 'react-native';
-import { Container, Header, Left, Right, Icon, Title, Button, Body } from 'native-base';
+import { Container, Header, Left, Right, Icon, Title, Button, Body, ListItem } from 'native-base';
 import GLOBAL from '../constants';
 
-
-import NavigationHeader from '../components/navigation_header';
-import ArtistsList from '../components/artists_list';
+// Data Source
+const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
 class ArtistsScreen extends Component {
+
+  constructor() {
+    super();
+    this.state = { dataSource: ds.cloneWithRows([]), loading: true };
+  }
+
+  componentDidMount() {
+    fetch('https://raw.githubusercontent.com/RustComet/YFFJSON/master/artists_remote.json')
+    .then((response) => response.json())
+    .then((responseJson) => responseJson.artists)
+    .then((responseJson) => {
+        // localCompare didn't seem to be working.
+        // This is ugly but seems to do the trick. Although there's probably
+        // a better place to put it
+        responseJson.sort(function(a, b) {
+          if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+          if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+          return 0;
+        });
+
+        this.setState({ dataSource: ds.cloneWithRows( responseJson ) }, () => { this.setState({ loading: false }) });
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+  }
+
+  selectedArtistRow( selectedArtist )
+    {
+        this.props.navigation.navigate('ARTIST', { artist: selectedArtist });
+    }
+
   render(){
     return (
       <Container>
@@ -28,6 +62,22 @@ class ArtistsScreen extends Component {
           <Right>
           </Right>
         </Header>
+        <View>
+        {
+          (this.state.loading)
+          ?
+          (<ActivityIndicator size = "large"/>)
+          :
+          (<ListView style = {{ alignSelf: 'stretch' }}
+                     dataSource = { this.state.dataSource }
+                     renderRow = {( rowData ) =>
+                        <ListItem style = { styles.item } onPress = { this.selectedArtistRow.bind( this, rowData ) }>
+                          <Text style = { styles.listLabel }>{ rowData.name.toUpperCase() }</Text>
+                        </ListItem>
+                     }
+            />)
+            }
+        </View>
       </Container>
     );
   }
@@ -37,6 +87,15 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: 'SourceSansPro-Regular',
     fontSize: 24,
+  },
+  ListItem: {
+    height: 60,
+    justifyContent: 'center'
+  },
+  listLabel: {
+    flex: 1,
+    fontFamily: 'BebasNeueRegular',
+    fontSize: 28
   }
 })
 

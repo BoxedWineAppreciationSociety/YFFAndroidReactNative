@@ -8,7 +8,7 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Image } from 'react-native';
-import { createDrawerNavigator, createAppContainer, DrawerItems } from "react-navigation";
+import { createStackNavigator, createDrawerNavigator, createAppContainer, DrawerItems } from "react-navigation";
 
 import ArtistsScreen from './screens/ArtistsScreen'
 import ProgramScreen from './screens/ProgramScreen'
@@ -17,6 +17,7 @@ import MapScreen from './screens/MapScreen'
 import MainNavigationComponent from './components/nav_drawer';
 import GLOBAL from './constants';
 import MadeWithLoveScreen from './screens/MadeWithLoveScreen';
+import ArtistScreen from './screens/ArtistScreen';
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -27,6 +28,18 @@ export default class App extends Component<Props> {
   }
 }
 
+const ArtistNavigator = createStackNavigator(
+  {
+    ARTISTS: {
+      screen: ArtistsScreen
+    },
+    ARTIST: {
+      screen: ArtistScreen
+    },
+  }, {
+    headerMode: 'none'
+  }
+);
 
 const AppDrawerNavigator = createDrawerNavigator({
   PROGRAM: {
@@ -56,7 +69,7 @@ const AppDrawerNavigator = createDrawerNavigator({
     }
   },
   ARTISTS: {
-    screen: ArtistsScreen,
+    screen: ArtistNavigator,
     navigationOptions: {
       drawerLabel: 'ARTISTS',
       drawerIcon: ({ tintColor }) => (
@@ -98,7 +111,7 @@ const AppDrawerNavigator = createDrawerNavigator({
   contentComponent: MainNavigationComponent,
   defaultNavigationOptions: {
     color: GLOBAL.COLOR.YFFBROWN,
-    textAlign: 'left',
+    textAlign: 'left'
   },
   contentOptions: {
     labelStyle: {
@@ -106,7 +119,7 @@ const AppDrawerNavigator = createDrawerNavigator({
       fontSize: 26,
       fontWeight: 'normal'
     },
-    activeTintColor: GLOBAL.COLOR.YFFBROWN,
+    activeTintColor: GLOBAL.COLOR.YFFBROWN
   }
 });
 
