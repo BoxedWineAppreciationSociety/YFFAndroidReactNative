@@ -95,12 +95,11 @@ const styles = StyleSheet.create({
   artistImageView: {
     alignItems: 'stretch',
     flex: 1,
-    height: 300,
-    // flexDirection: 'row'
+    height: 280,
   },
   artistImage: {
     width: '100%',
-    height: 300,
+    height: 280,
     resizeMode: 'cover'
   },
   artistName: {
