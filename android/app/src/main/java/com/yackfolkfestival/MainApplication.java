@@ -1,4 +1,4 @@
-package com.yffandroid;
+package com.yackfolkfestival;
 
 import android.app.Application;
 
