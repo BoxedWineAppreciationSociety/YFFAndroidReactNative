@@ -58,7 +58,7 @@ class ArtistScreen extends Component {
           <Image style={styles.artistImage} source={require('../assets/images/artist-placeholder.png')} />
         </View>
         <View>
-          <Text style={styles.artistName}>{artistName.toUpperCase()}</Text>
+          <Text style={styles.artistName} numberOfLines={1}>{artistName.toUpperCase()}</Text>
         </View>
         <View style={styles.aboutPlayinTimesContainer}>
           <ArtistScreenTabButton label='details' btnSelected={this.state.btnSelected} callback={this.updateSelectedTab} />

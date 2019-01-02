@@ -5,12 +5,9 @@ import {
   ActivityIndicator,
   StyleSheet
 } from 'react-native';
-import { ListItem } from 'native-base';
-
-import GLOBAL from '../../constants';
-import { fetchArtist } from '../../api/artist_fetcher';
 import ProgramListItem from './program_list_item';
 
+import { localStorage } from '../../api/storage';
 
 // Data Source
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
@@ -22,9 +19,7 @@ class ProgramList extends Component {
   }
 
   componentDidMount() {
-    fetch(this.props.endpoint)
-    .then((response) => response.json())
-    .then((responseJson) => responseJson.performances)
+    storage.load({ key: this.props.storageKey, autoSync: true })
     .then((responseJson) => {
         responseJson.sort(function(a, b) {
           return a.time-b.time;

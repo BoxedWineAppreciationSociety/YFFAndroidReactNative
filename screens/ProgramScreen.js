@@ -42,13 +42,13 @@ class ProgramScreen extends Component {
         <ProgramDayPicker callback={this.updateSelectedDay} daySelected={this.state.daySelected} />
       </View>
       <View style={(this.state.daySelected === 'FRI') ? styles.programList : styles.none}>
-        <ProgramList endpoint={GLOBAL.ENDPOINTS.FRIPERFORMANCES} navigation={this.props.navigation} />
+        <ProgramList storageKey='fridayPerformances' navigation={this.props.navigation} />
       </View>
       <View style={(this.state.daySelected === 'SAT') ? styles.programList : styles.none}>
-        <ProgramList endpoint={GLOBAL.ENDPOINTS.SATPERFORMANCES} navigation={this.props.navigation} />
+        <ProgramList storageKey='saturdayPerformances' navigation={this.props.navigation} />
       </View>
       <View style={(this.state.daySelected === 'SUN') ? styles.programList : styles.none}>
-        <ProgramList endpoint={GLOBAL.ENDPOINTS.SUNPERFORMANCES} navigation={this.props.navigation} />
+        <ProgramList storageKey='sundayPerformances' navigation={this.props.navigation} />
       </View>
     </Container>
     );

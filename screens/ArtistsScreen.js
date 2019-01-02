@@ -9,7 +9,9 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { Container, Header, Left, Right, Icon, Title, Button, Body, ListItem } from 'native-base';
+
 import GLOBAL from '../constants';
+import localStorage from '../api/storage';
 
 // Data Source
 const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
@@ -22,9 +24,7 @@ class ArtistsScreen extends Component {
   }
 
   componentDidMount() {
-    fetch(GLOBAL.ENDPOINTS.ARTISTS)
-    .then((response) => response.json())
-    .then((responseJson) => responseJson.artists)
+    storage.load({ key: 'artists', autoSync: true }) // fetch(GLOBAL.ENDPOINTS.ARTISTS)
     .then((responseJson) => {
         // localCompare didn't seem to be working.
         // This is ugly but seems to do the trick. Although there's probably
