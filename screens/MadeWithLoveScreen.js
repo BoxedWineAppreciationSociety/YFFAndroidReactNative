@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, View, Text } from 'react-native';
+import { StyleSheet, Image, View, Text, ScrollView } from 'react-native';
 import { Container, Header, Left, Button, Icon, Title, Right, Body, Content } from 'native-base';
 import GLOBAL from '../constants'
 
@@ -22,15 +22,18 @@ class MadeWithLoveScreen extends Component {
       <View style={styles.content}>
         <Image style={styles.heroImage} source={require('../assets/made-with-love.png')} />
       </View>
-      <View style={styles.textView}>
+      <ScrollView style={styles.textView}>
         <Text style={styles.madeWithLoveText}>
-          This app was made with love by a local Yackandandarian, a Liverpudlian and a girl from Ballarat
+          This app was made with love by a local Yackandandarian, a Liverpudlian and a girl from Ballarat.
           {"\n\n"}
-          If you like the app, let us know and maybe buy us a beer.
+          If you're enjoying the app, or if there's anything you'd like to see next year, come have a chat to us!
+           We also accept donations of beer to support further updates.
           {"\n\n"}
-          We’ll see you at the festival!
+          We hope to see you at the festival!
+          {"\n\n"}
+          ❤
         </Text>
-      </View>
+      </ScrollView>
     </Container>
     )
   }
@@ -44,27 +47,24 @@ const styles = StyleSheet.create({
     fontFamily: 'SourceSansPro-Regular',
     fontSize: 24,
   },
-  right: {
-    flex: 0
-  },
   content: {
     alignItems: 'stretch',
-    flex: 1,
+    height: 250,
     flexDirection: 'row'
   },
   textView: {
-    flex: 2,
-    justifyContent: 'flex-start',
+    flex: 1
   },
   madeWithLoveText: {
     textAlign: 'center',
-    lineHeight: 26,
+    lineHeight: 24,
     fontFamily: 'SourceSansPro-Regular',
     margin: 30,
-    fontSize: 20
+    fontSize: 18
   },
   heroImage: {
     flex: 1,
+    height: 250,
     resizeMode: 'cover'
   }
 })
