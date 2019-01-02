@@ -6,6 +6,10 @@ export const fetchArtist = (artistId) => {
                 .then((responseJson) => {
                   return responseJson.filter(x => x.id == artistId)[0]
                 })
+                .then((responseJson) => {
+                  responseJson.image = '../assets/images/artist-images/' + responseJson.image_name + '.png';
+                  return responseJson;
+                })
                 .catch((error) => {
                   console.log(error);
                 });

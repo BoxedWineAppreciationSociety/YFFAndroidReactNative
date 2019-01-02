@@ -5,6 +5,7 @@ import GLOBAL from '../constants'
 import ArtistScreenTabButton from '../components/artist_screen_tab_button';
 import PlayingTimesList from '../components/playing_times_list';
 import { fetchArtist } from '../api/artist_fetcher';
+import images from '../assets/artist_photos/index';
 
 class ArtistScreen extends Component {
   constructor(props) {
@@ -34,6 +35,10 @@ class ArtistScreen extends Component {
     this.setState({ artist: artist })
   }
 
+  artistImage(imageName) {
+    return (images[imageName]!=null) ? images[imageName] : require('../assets/images/artist-placeholder.png');
+  }
+
   render() {
     const { navigation } = this.props;
 
@@ -55,7 +60,7 @@ class ArtistScreen extends Component {
           <Right />
         </Header>
         <View>
-          <Image style={styles.artistImage} source={require('../assets/images/artist-placeholder.png')} />
+          <Image style={styles.artistImage} source={this.artistImage(this.state.artist.image_name)} />
         </View>
         <View>
           <Text style={styles.artistName} numberOfLines={1}>{artistName.toUpperCase()}</Text>
@@ -86,10 +91,11 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     flex: 1,
     height: 300,
-    flexDirection: 'row'
+    // flexDirection: 'row'
   },
   artistImage: {
     width: '100%',
+    height: 300,
     resizeMode: 'cover'
   },
   artistName: {
