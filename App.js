@@ -11,8 +11,7 @@ import { StyleSheet, Image } from "react-native";
 import {
   createStackNavigator,
   createDrawerNavigator,
-  createAppContainer,
-  DrawerItems
+  createAppContainer
 } from "react-navigation";
 
 import ArtistsScreen from "./screens/ArtistsScreen";
@@ -23,8 +22,6 @@ import MainNavigationComponent from "./components/nav_drawer";
 import GLOBAL from "./constants";
 import MadeWithLoveScreen from "./screens/MadeWithLoveScreen";
 import ArtistScreen from "./screens/ArtistScreen";
-
-import { localStorage } from "./api/storage";
 
 type Props = {};
 export default class App extends Component<Props> {
