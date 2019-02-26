@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint",
+    "format": "prettier-eslint"
   },
   "dependencies": {
     "moment": "^2.23.0",
@@ -19,8 +21,10 @@
     "react-navigation": "^3.0.9"
   },
   "devDependencies": {
+    "eslint": "^5.10.0",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.51.1",
+    "prettier-eslint-cli": "^4.7.1",
     "react-test-renderer": "16.6.3"
   },
   "jest": {
