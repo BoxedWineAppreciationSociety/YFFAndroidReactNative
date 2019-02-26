@@ -1,3 +1,5 @@
+import React from "react";
+import { Image } from "react-native";
 import { createDrawerNavigator } from "react-navigation";
 
 import ArtistNavigator from "./ArtistNavigator";
