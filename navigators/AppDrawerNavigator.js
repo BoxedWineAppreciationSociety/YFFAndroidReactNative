@@ -17,7 +17,7 @@ export default (AppDrawerNavigator = createDrawerNavigator(
         drawerLabel: "PROGRAM",
         drawerIcon: ({ tintColor }) => (
           <Image
-            source={require("./assets/icons/ic-drawer-note.png")}
+            source={require("../assets/icons/ic-drawer-note.png")}
             resizeMode="contain"
             style={{ width: 20, height: 20, tintColor: GLOBAL.COLOR.YFFBROWN }}
           />
@@ -30,7 +30,7 @@ export default (AppDrawerNavigator = createDrawerNavigator(
         drawerLabel: "EVENT MAP",
         drawerIcon: ({ tintColor }) => (
           <Image
-            source={require("./assets/icons/ic-drawer-map.png")}
+            source={require("../assets/icons/ic-drawer-map.png")}
             resizeMode="contain"
             style={{ width: 20, height: 20, tintColor: GLOBAL.COLOR.YFFBROWN }}
           />
@@ -43,7 +43,7 @@ export default (AppDrawerNavigator = createDrawerNavigator(
         drawerLabel: "ARTISTS",
         drawerIcon: ({ tintColor }) => (
           <Image
-            source={require("./assets/icons/ic-drawer-guitar.png")}
+            source={require("../assets/icons/ic-drawer-guitar.png")}
             resizeMode="contain"
             style={{ width: 20, height: 20, tintColor: GLOBAL.COLOR.YFFBROWN }}
           />
@@ -56,7 +56,7 @@ export default (AppDrawerNavigator = createDrawerNavigator(
         drawerLabel: "MORE",
         drawerIcon: ({ tintColor }) => (
           <Image
-            source={require("./assets/icons/ic-drawer-more.png")}
+            source={require("../assets/icons/ic-drawer-more.png")}
             resizeMode="contain"
             style={{ width: 20, height: 20, tintColor: GLOBAL.COLOR.YFFBROWN }}
           />
@@ -69,7 +69,7 @@ export default (AppDrawerNavigator = createDrawerNavigator(
         drawerLabel: "MADE WITH LOVE",
         drawerIcon: ({ tintColor }) => (
           <Image
-            source={require("./assets/icons/ic-made-with-love.png")}
+            source={require("../assets/icons/ic-made-with-love.png")}
             resizeMode="contain"
             style={{ width: 20, height: 20, tintColor: GLOBAL.COLOR.YFFBROWN }}
           />
