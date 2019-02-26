@@ -21,7 +21,6 @@ export default {
   "KrazyKoala": require("./KrazyKoala.jpg"),
   "LadyValiant": require("./LadyValiant.jpg"),
   "LauraHill": require("./LauraHill.png"),
-  "LindsayLou": require("./LindsayLou.jpg"),
   "LindsayLou": require("./LindsayLou.png"),
   "MariahMcCarthy": require("./MariahMcCarthy.jpg"),
   "NewFlamenco": require("./NewFlamenco.png"),

@@ -1,6 +1,6 @@
 {
-  "name": "YFFAndroid",
-  "version": "0.0.1",
+  "name": "YackFolkFestival",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -13,6 +13,7 @@
     "react-moment": "^0.8.4",
     "react-native": "0.57.8",
     "react-native-gesture-handler": "^1.0.12",
+    "react-native-photo-view": "git+https://github.com/tomtom94/react-native-photo-view.git",
     "react-native-screens": "^1.0.0-alpha.19",
     "react-native-storage": "^1.0.0-beta.0",
     "react-navigation": "^3.0.9"
