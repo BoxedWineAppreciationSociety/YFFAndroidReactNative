@@ -23,8 +23,7 @@ import GLOBAL from "./constants";
 import MadeWithLoveScreen from "./screens/MadeWithLoveScreen";
 import ArtistScreen from "./screens/ArtistScreen";
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
   componentWillMount() {
     this.resyncData();
   }
