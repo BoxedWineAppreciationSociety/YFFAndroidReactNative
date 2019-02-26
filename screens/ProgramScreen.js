@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import {
   Container,
   Header,
@@ -9,8 +9,7 @@ import {
   Icon,
   Title,
   Button,
-  View,
-  Content
+  View
 } from "native-base";
 import GLOBAL from "../constants";
 import ProgramDayPicker from "../components/program/ProgramDayPicker";
