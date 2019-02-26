@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { StyleSheet, View, ImageBackground, Text } from "react-native";
-import { Left, Title, Right, Button, Container } from "native-base";
+import { Button } from "native-base";
 
 import GLOBAL from "../../constants";
 
