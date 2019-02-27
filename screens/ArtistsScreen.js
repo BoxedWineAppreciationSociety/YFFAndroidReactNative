@@ -30,8 +30,8 @@ class ArtistsScreen extends Component {
         // This is ugly but seems to do the trick. Although there's probably
         // a better place to put it
         responseJson.sort(function(a, b) {
-          if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
-          if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+          if(a.sort_name.toLowerCase() < b.sort_name.toLowerCase()) return -1;
+          if(a.sort_name.toLowerCase() > b.sort_name.toLowerCase()) return 1;
           return 0;
         });
 
