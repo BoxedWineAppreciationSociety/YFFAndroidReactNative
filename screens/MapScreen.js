@@ -32,9 +32,10 @@ MapScreen = ({ navigation }) => {
           source={require("../assets/mapImage.png")}
           minimumZoomScale={1}
           maximumZoomScale={3}
-          androidScaleType="center"
+          androidScaleType="fitCenter"
           onLoad={() => console.log("Image loaded!")}
-          style={{ height: "100%" }}
+          style={{ flex: 1, maxWidth: '100%', maxHeight: '100%' }}
+          resizeMode={'contain'}
         />
       </View>
     </Container>
