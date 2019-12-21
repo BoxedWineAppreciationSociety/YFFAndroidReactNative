@@ -8,7 +8,7 @@ export default {
   "EarthHour": require("./EarthHour.jpg"),
   "EddieCole": require("./EddieCole.jpg"),
   "EndaKenny": require("./EndaKenny.jpg"),
-  "ForgottenLand": require("./ForgottenLand.jpg"),
+  "ForgottenLand": require('./ForgottenLand.jpg'),
   "FredSmithBand": require("./FredSmithBand.jpg"),
   "GenevieveChadwick": require("./GenevieveChadwick.jpg"),
   "GordonMullen": require("./GordonMullen.jpg"),
