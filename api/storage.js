@@ -9,11 +9,11 @@ export const localStorage = new Storage({
   // Expire data after 1 day (which will force a resync)
   // Because we have autoSync on it will used the expired data
   // if the resync fails
-  defaultExpires: 1000 * 3600 * 24,
+  defaultExpires: 10,
   autoSync: true,
 
   // Cache the responses in memory for speedy loading
-  enableCache: true,
+  enableCache: false,
 
   // Various sync methods for the different keys
   sync: {
